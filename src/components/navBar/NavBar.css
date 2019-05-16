@@ -1,0 +1,28 @@
+.NavBarBody {
+  background-color: #35485c;
+  z-index: 1;
+  margin-top: 20px;
+  width: 80vw;
+  border-radius: 10px;
+}
+
+.SearchBarInput {
+  width: 60%;
+  height: 40px;
+}
+
+.NavBarBodyText {
+  color: #bacad4;
+  font-size: 18px;
+}
+
+.NavBarSearchIcon {
+  display: inline;
+  background-color: #ffffff;
+  height: 40px;
+}
+.NavBarSearchIcon i {
+  padding: 10px 10px 0 10px;
+  color: #35485c;
+  height: 39px;
+}

@@ -1,0 +1,10 @@
+.MessageBody {
+  margin: 20px;
+  width: fit-content;
+  min-width: 40%;
+  max-width: 60%;
+  border-color: #79777765;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+}

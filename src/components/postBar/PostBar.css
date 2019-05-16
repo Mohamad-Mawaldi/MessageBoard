@@ -1,0 +1,17 @@
+.PostBarInput {
+  width: 76%;
+  height: 40px;
+  margin: 0 0 20px 100px;
+}
+
+.PostBarArrowIcon {
+  display: inline-block;
+  background-color: #ffffff;
+  border: solid 1px #92969775;
+  height: 39px;
+}
+
+.PostBarArrowIcon i {
+  padding: 10px 10px 0 10px;
+  color: #35485c;
+}
