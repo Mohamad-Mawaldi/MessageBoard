@@ -1,0 +1,11 @@
+.SideNavBody {
+  background-color: #35485c;
+  height: 100vh;
+  width: fit-content;
+}
+
+.SideNavMenu li {
+  padding: 20px;
+  display: block;
+  color: #bacad4;
+}
