@@ -2,18 +2,16 @@ import React from "react";
 import "./Message.css";
 
 const Message = props => {
+  console.log("props.message ******", props.messageItem);
   return (
     <div className='MessageBody'>
       <div className='row'>
         <div className='MessageAuthorPic' />
-        <div className='MessageAuthor col-3'>MAX mark</div>
+        <div className='MessageAuthor col-3'>{props.messageItem.author}</div>
       </div>
       <div className='row'>
-        <div className='Message col-11'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta alias
-          aliquid eum, necessitatibus ex nesciunt nihil pariatur vel, sequi
-          dolores, harum deserunt minima a similique blanditiis expedita
-          delectus suscipit! Nemo.
+        <div className='MessageContent col-11'>
+          <p>{props.messageItem.message}</p>
         </div>
       </div>
     </div>

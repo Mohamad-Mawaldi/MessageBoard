@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import SideNav from "../sideNav/SideNav";
 import NavBar from "../navBar/NavBar";
-import PostBar from "../postBar/PostBar";
-import MessagesList from "../messages/MessagesList";
+import PostMessageBar from "../postMessageBar/PostMessageBar";
+import MessagesList from "../messages/messagesList/MessagesList";
+import { connect } from "react-redux";
+import { fetchMessages } from "./../../store/actions/messageAction";
 
 export class DashBoard extends Component {
+  componentDidMount() {
+    fetchMessages();
+  }
   render() {
+    console.log("messages", this.props.messages);
     return (
       <div>
         <div className='row'>
@@ -14,8 +20,8 @@ export class DashBoard extends Component {
           </div>
           <div className='col'>
             <NavBar />
-            <MessagesList />
-            <PostBar />
+            <MessagesList messages={this.props.messages} />
+            <PostMessageBar />
           </div>
         </div>
       </div>
@@ -23,4 +29,11 @@ export class DashBoard extends Component {
   }
 }
 
-export default DashBoard;
+const mapStateToProps = state => ({
+  messages: state.messages.items
+});
+
+export default connect(
+  mapStateToProps,
+  fetchMessages
+)(DashBoard);

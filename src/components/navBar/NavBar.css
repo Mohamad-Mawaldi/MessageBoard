@@ -17,7 +17,7 @@
 }
 
 .NavBarSearchIcon {
-  display: inline;
+  display: inline-block;
   background-color: #ffffff;
   height: 40px;
 }

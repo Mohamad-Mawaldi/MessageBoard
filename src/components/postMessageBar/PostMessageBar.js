@@ -1,5 +1,5 @@
 import React from "react";
-import "./PostBar.css";
+import "./PostMessageBar.css";
 const PostBar = () => {
   return (
     <div>
