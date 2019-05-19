@@ -1,4 +1,6 @@
 .MessagesList {
   overflow: scroll;
+  background-color: #f1eeee;
   max-height: 75vh;
+  border-radius: 1%;
 }

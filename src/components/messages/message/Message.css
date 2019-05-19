@@ -16,6 +16,22 @@
   margin-left: 6px;
 }
 
-.MessageContent:hover {
+.MessageBody:hover .MessageContent {
   background-color: rgba(61, 60, 60, 0.09);
+}
+
+.MessageBody:hover .MessageOptionsBody li {
+  display: block;
+}
+
+.MessageOptionsBody li {
+  font-size: 11px;
+  float: right;
+  list-style: none;
+  padding: 2px;
+  display: none;
+  border-style: solid;
+  border-color: #a8a5a544;
+  color: #35485c;
+  border-width: 1px;
 }
