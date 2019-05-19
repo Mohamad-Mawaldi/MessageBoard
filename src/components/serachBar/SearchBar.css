@@ -6,18 +6,25 @@
 }
 
 .SearchBarInput {
-  width: 60%;
+  width: 90%;
   height: 40px;
+  padding: 10px;
+  margin: 20px 0 10px 10px;
+}
+
+.SearchBarInput input {
+  width: 70%;
 }
 
 .NavBarBodyText {
-  color: #bacad4;
+  color: #edf1f2;
   font-size: 18px;
+  padding: 10px 15px;
 }
 
 .NavBarSearchIcon {
   display: inline-block;
-  background-color: #ffffff;
+  background-color: #edf1f2;
   height: 40px;
 }
 .NavBarSearchIcon i {

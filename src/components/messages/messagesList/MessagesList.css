@@ -1,6 +1,7 @@
 .MessagesList {
   overflow: scroll;
-  min-height: 68vh;
-  max-height: 68vh;
+  min-height: 63vh;
+  max-height: 65vh;
   border-radius: 1%;
+  overflow-x: hidden;
 }

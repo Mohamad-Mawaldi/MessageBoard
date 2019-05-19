@@ -5,23 +5,37 @@ import {
   deleteMessage,
   updateMessage
 } from "../../../store/actions/messageAction";
+import { UserName } from "../../../Consts";
 
 const Message = props => {
+  const messageOptions = () => {
+    if (props.messageItem.author === UserName) {
+      return (
+        <ul className='MessageOptionsBody'>
+          <li onClick={() => deleteMessage(props.messageItem.id)}>
+            <i className='fas fa-times' />
+          </li>
+          <li onClick={() => console.log(props.messageItem.id)}>
+            <i className='fas fa-pen' />
+          </li>
+          <li onClick={() => console.log(props.messageItem.id)}>
+            <i className='fas fa-reply-all' />
+          </li>
+        </ul>
+      );
+    } else {
+      return (
+        <ul className='MessageOptionsBody'>
+          <li onClick={() => console.log(props.messageItem.id)}>
+            <i className='fas fa-reply-all' />
+          </li>
+        </ul>
+      );
+    }
+  };
+
   return (
     <div className='container'>
-      {/* <div className='MessageOptions col'>
-          <ul className='MessageOptionsBody'>
-            <li onClick={() => deleteMessage(props.messageItem.id)}>
-              <i className='fas fa-times' />
-            </li>
-            <li onClick={() => console.log(props.messageItem.id)}>
-              <i className='fas fa-pen' />
-            </li>
-            <li onClick={() => console.log(props.messageItem.id)}>
-              <i className='fas fa-reply' />
-            </li>
-          </ul>
-        </div> */}
       <div className='MessageBody'>
         <div className='row'>
           <div className='col-1'>
@@ -31,7 +45,7 @@ const Message = props => {
               alt='profilePicture'
             />
           </div>
-          <div className='MessageContent col-11'>
+          <div className='MessageContent col-9'>
             <div>{props.messageItem.message.substring(0, 90)}...</div>
             <div className='row'>
               <div className='MessageAuthor col-12'>
@@ -39,6 +53,7 @@ const Message = props => {
               </div>
             </div>
           </div>
+          <div className='MessageOptions col-2'>{messageOptions()}</div>
         </div>
       </div>
     </div>

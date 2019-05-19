@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./PostMessageBar.css";
 import { connect } from "react-redux";
 import { createMessage } from "../../store/actions/messageAction";
+import { UserName } from "../../Consts";
+import TonyPicture from "../../asset/ironman_endgame.png";
 
 export class PostMessageBar extends Component {
   state = {
@@ -18,9 +20,10 @@ export class PostMessageBar extends Component {
       e.preventDefault();
 
       const message = {
-        author: "author 3",
+        author: UserName,
         parentId: 0,
-        message: this.state.message
+        message: this.state.message,
+        profilePicture: TonyPicture
       };
 
       console.log(".........submit", message);
