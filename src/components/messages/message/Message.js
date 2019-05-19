@@ -8,11 +8,8 @@ import {
 
 const Message = props => {
   return (
-    <div className='MessageBody'>
-      <div className='row'>
-        <div className='MessageAuthorPic' />
-        <div className='MessageAuthor col-3'>{props.messageItem.author}</div>
-        <div className='MessageOptions col'>
+    <div className='container'>
+      {/* <div className='MessageOptions col'>
           <ul className='MessageOptionsBody'>
             <li onClick={() => deleteMessage(props.messageItem.id)}>
               <i className='fas fa-times' />
@@ -24,11 +21,24 @@ const Message = props => {
               <i className='fas fa-reply' />
             </li>
           </ul>
-        </div>
-      </div>
-      <div className='row'>
-        <div className='MessageContent col-11'>
-          <p>{props.messageItem.message}</p>
+        </div> */}
+      <div className='MessageBody'>
+        <div className='row'>
+          <div className='col-1'>
+            <img
+              src={props.messageItem.profilePicture}
+              className='MessageAuthorPic rounded-circle '
+              alt='profilePicture'
+            />
+          </div>
+          <div className='MessageContent col-11'>
+            <div>{props.messageItem.message.substring(0, 90)}...</div>
+            <div className='row'>
+              <div className='MessageAuthor col-12'>
+                by <strong>{props.messageItem.author}</strong>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

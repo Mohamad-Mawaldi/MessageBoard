@@ -1,0 +1,40 @@
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.navbar-icon-top .navbar-nav .nav-link > .fa {
+  position: relative;
+  width: 36px;
+  font-size: 24px;
+  top: 10px;
+  line-height: 12px;
+}
+.navbar {
+  background-color: #2d8de8;
+}
+
+.navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+  font-size: 0.75rem;
+  position: absolute;
+  right: 20px;
+  top: -10px;
+  color: #edf1f2;
+}
+
+.ProfilePictureNavBar {
+  height: 40px;
+  width: 40px;
+}
+
+.SearchIconNavBar {
+  padding: 10px;
+  background: #edf1f2;
+  color: #2d8de8;
+  min-width: 50px;
+  text-align: center;
+}
+
+.SearchInputNavBar {
+  padding: 10px;
+}
+.badge-light {
+  color: #2d8de8 !important;
+}

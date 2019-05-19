@@ -28,12 +28,12 @@ export class PostMessageBar extends Component {
     };
 
     return (
-      <div className='row'>
-        <div className='col fixed-bottom'>
+      <div className='row '>
+        <div className='col '>
           <input
             className='PostBarInput'
             type='text'
-            placeholder='  Write a Message'
+            placeholder='Write a Message'
             onChange={onChange}
             value={this.state.body}
           />

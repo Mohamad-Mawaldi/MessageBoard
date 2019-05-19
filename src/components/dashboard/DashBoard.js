@@ -5,6 +5,7 @@ import PostMessageBar from "../postMessageBar/PostMessageBar";
 import MessagesList from "../messages/messagesList/MessagesList";
 import { connect } from "react-redux";
 import { fetchMessages } from "./../../store/actions/messageAction";
+import NavBar from "../navBar/NavBar";
 
 export class DashBoard extends Component {
   componentDidMount() {
@@ -14,11 +15,12 @@ export class DashBoard extends Component {
     console.log("messages", this.props.messages);
     return (
       <div className='DashBoardWrapper'>
+        <NavBar />
         <div className='row'>
           <div className='col-2'>
             <SideNav />
           </div>
-          <div className='col'>
+          <div className='col-8'>
             <SearchBar />
             <MessagesList messages={this.props.messages} />
             <PostMessageBar />
