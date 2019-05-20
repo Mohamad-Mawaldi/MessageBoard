@@ -10,38 +10,38 @@ export class PostMessageBar extends Component {
     message: ""
   };
 
+  onChange = e => {
+    this.setState({ message: e.target.value });
+    console.log(".........", this.state.message);
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+
+    const message = {
+      author: UserName,
+      parentId: 0,
+      message: this.state.message,
+      profilePicture: TonyPicture
+    };
+
+    console.log(".........submit", message);
+    this.props.createMessage(message);
+  };
+
   render() {
-    const onChange = e => {
-      this.setState({ message: e.target.value });
-      console.log(".........", this.state.message);
-    };
-
-    const onSubmit = e => {
-      e.preventDefault();
-
-      const message = {
-        author: UserName,
-        parentId: 0,
-        message: this.state.message,
-        profilePicture: TonyPicture
-      };
-
-      console.log(".........submit", message);
-      this.props.createMessage(message);
-    };
-
     return (
-      <div className='row '>
-        <div className='col '>
+      <div className="row ">
+        <div className="col ">
           <input
-            className='PostBarInput'
-            type='text'
-            placeholder='Write a Message'
-            onChange={onChange}
+            className="PostBarInput"
+            type="text"
+            placeholder="Write a Message"
+            onChange={this.onChange}
             value={this.state.body}
           />
-          <div className='PostBarArrowIcon' onClick={onSubmit}>
-            <i className='fas fa-arrow-right' />
+          <div className="PostBarArrowIcon" onClick={this.onSubmit}>
+            <i className="fas fa-arrow-right" />
           </div>
         </div>
       </div>
