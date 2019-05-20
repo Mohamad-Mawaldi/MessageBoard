@@ -30,6 +30,18 @@ export class PostMessageBar extends Component {
       this.props.createMessage(message);
     };
 
+    const handleKeyDown = e => {
+      if (e.key === "Enter") {
+        const message = {
+          author: UserName,
+          parentId: 0,
+          message: this.state.message,
+          profilePicture: TonyPicture
+        };
+        this.props.createMessage(message);
+      }
+    };
+
     return (
       <div className='row '>
         <div className='col '>
@@ -39,6 +51,7 @@ export class PostMessageBar extends Component {
             placeholder='Write a Message'
             onChange={onChange}
             value={this.state.body}
+            onKeyDown={handleKeyDown}
           />
           <div className='PostBarArrowIcon' onClick={onSubmit}>
             <i className='fas fa-arrow-right' />
