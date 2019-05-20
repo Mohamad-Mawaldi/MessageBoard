@@ -11,7 +11,7 @@ export class DashBoard extends Component {
   componentDidMount() {
     this.props.fetchMessages();
   }
-  render(props) {
+  render() {
     console.log("messages", this.props.messages);
     return (
       <div className='DashBoardWrapper'>

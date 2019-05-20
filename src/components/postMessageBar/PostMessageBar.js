@@ -1,44 +1,69 @@
 import React, { Component } from "react";
 import "./PostMessageBar.css";
 import { connect } from "react-redux";
-import { createMessage } from "../../store/actions/messageAction";
+import {
+  createMessage,
+  updateMessage
+} from "../../store/actions/messageAction";
 import { UserName } from "../../Consts";
 import TonyPicture from "../../asset/ironman_endgame.png";
 
 export class PostMessageBar extends Component {
   state = {
-    message: ""
+    id: 0,
+    messageItem: {
+      author: UserName,
+      parentId: 0,
+      message: "",
+      profilePicture: TonyPicture
+    }
+  };
+
+  updateMessageHandler = message => {
+    if (!message.isEmpty()) {
+      const message = this.props.clickedMessage;
+      const id = message.id;
+      delete message.id;
+
+      this.setState({
+        messageItem: {
+          message
+        },
+        id
+      });
+    }
   };
 
   render() {
+    console.log("props.message", this.props.clickedMessage);
+    this.updateMessageHandler(this.props.clickedMessage.message);
+
+    console.log("state", this.state);
+
     const onChange = e => {
-      this.setState({ message: e.target.value });
-      console.log(".........", this.state.message);
+      this.setState({
+        messageItem: { ...this.state.messageItem, message: e.target.value }
+      });
+      console.log(".........", this.state.messageItem);
     };
 
     const onSubmit = e => {
       e.preventDefault();
-
-      const message = {
-        author: UserName,
-        parentId: 0,
-        message: this.state.message,
-        profilePicture: TonyPicture
-      };
-
-      console.log(".........submit", message);
-      this.props.createMessage(message);
+      console.log(".........submit", this.state.messageItem);
+      this.props.createMessage(this.state.messageItem);
+      this.setState({
+        messageItem: { ...this.state.messageItem, message: "" },
+        id: 0
+      });
     };
 
     const handleKeyDown = e => {
       if (e.key === "Enter") {
-        const message = {
-          author: UserName,
-          parentId: 0,
-          message: this.state.message,
-          profilePicture: TonyPicture
-        };
-        this.props.createMessage(message);
+        this.props.createMessage(this.state.messageItem);
+        this.setState({
+          messageItem: { ...this.state.messageItem, message: "" },
+          id: 0
+        });
       }
     };
 
@@ -50,7 +75,7 @@ export class PostMessageBar extends Component {
             type='text'
             placeholder='Write a Message'
             onChange={onChange}
-            value={this.state.body}
+            value={this.state.messageItem.message}
             onKeyDown={handleKeyDown}
           />
           <div className='PostBarArrowIcon' onClick={onSubmit}>
@@ -62,7 +87,17 @@ export class PostMessageBar extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    createMessage: message => dispatch(createMessage(message)),
+    updateMessage: message => dispatch(updateMessage(message))
+  };
+};
+
+const mapStateToProps = state => {
+  return { clickedMessage: state.messages.item };
+};
 export default connect(
-  null,
-  { createMessage }
+  mapStateToProps,
+  mapDispatchToProps
 )(PostMessageBar);

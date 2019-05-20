@@ -1,7 +1,10 @@
 import React from "react";
 import "./MessageOptions.css";
 import { connect } from "react-redux";
-import { deleteMessage } from "../../../store/actions/messageAction";
+import {
+  deleteMessage,
+  prepareMessageToUpdate
+} from "../../../store/actions/messageAction";
 import { UserName } from "../../../Consts";
 
 const MessageOptions = props => {
@@ -17,14 +20,14 @@ const MessageOptions = props => {
         </li>
         <li
           onClick={() => {
-            alert("hello delete");
+            props.prepareMessageToUpdate(props.messageItem);
           }}
         >
           <i className='fas fa-pen' />
         </li>
         <li
           onClick={() => {
-            alert("hello delete");
+            console.log("reply");
           }}
         >
           <i className='fas fa-reply-all' />
@@ -48,7 +51,9 @@ const MessageOptions = props => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteMessage: id => dispatch(deleteMessage(id))
+    deleteMessage: id => dispatch(deleteMessage(id)),
+    prepareMessageToUpdate: messageItem =>
+      dispatch(prepareMessageToUpdate(messageItem))
   };
 };
 

@@ -53,3 +53,10 @@ export const updateMessage = messageData => dispatch => {
     });
   });
 };
+
+export const prepareMessageToUpdate = messageData => dispatch => {
+  dispatch({
+    type: "PREPARE_MESSAGE_TO_UPDATE",
+    payload: messageData
+  });
+};
