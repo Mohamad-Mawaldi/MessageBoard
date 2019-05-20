@@ -8,17 +8,17 @@ export default (state = initialState, action) => {
       return {
         items: action.payload
       };
-    case "CREATE_MESSAGES":
+    case "CREATE_MESSAGE":
       return {
         items: [...state.items, action.payload]
       };
-    case "DELETE_MESSAGES":
+    case "DELETE_MESSAGE":
       return {
-        items: [...state.items].filter(
-          message => message.id !== action.payload.id
-        )
+        items: [...state.items].filter(message => {
+          return message.id !== action.payload.id;
+        })
       };
-    case "UPDATE_MESSAGES":
+    case "UPDATE_MESSAGE":
       return {
         items: [...state.items, action.payload]
       };

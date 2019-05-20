@@ -7,18 +7,30 @@ import {
 } from "../../../store/actions/messageAction";
 import { UserName } from "../../../Consts";
 
-const Message = props => {
+const Message = ({ messageItem }) => {
   const messageOptions = () => {
-    if (props.messageItem.author === UserName) {
+    if (messageItem.author === UserName) {
       return (
         <ul className='MessageOptionsBody'>
-          <li onClick={() => deleteMessage(props.messageItem.id)}>
+          <li
+            onClick={() => {
+              deleteMessage(messageItem.id);
+            }}
+          >
             <i className='fas fa-times' />
           </li>
-          <li onClick={() => console.log(props.messageItem.id)}>
+          <li
+            onClick={() => {
+              alert("hello delete");
+            }}
+          >
             <i className='fas fa-pen' />
           </li>
-          <li onClick={() => console.log(props.messageItem.id)}>
+          <li
+            onClick={() => {
+              alert("hello delete");
+            }}
+          >
             <i className='fas fa-reply-all' />
           </li>
         </ul>
@@ -26,30 +38,34 @@ const Message = props => {
     } else {
       return (
         <ul className='MessageOptionsBody'>
-          <li onClick={() => console.log(props.messageItem.id)}>
+          <li
+            onClick={() => {
+              alert("hello delete");
+            }}
+          >
             <i className='fas fa-reply-all' />
           </li>
         </ul>
       );
     }
   };
-
+  console.log("props", messageItem);
   return (
     <div className='container'>
       <div className='MessageBody'>
         <div className='row'>
           <div className='col-1'>
             <img
-              src={props.messageItem.profilePicture}
+              src={messageItem.profilePicture}
               className='MessageAuthorPic rounded-circle '
               alt='profilePicture'
             />
           </div>
           <div className='MessageContent col-9'>
-            <div>{props.messageItem.message.substring(0, 90)}...</div>
+            <div>{messageItem.message.substring(0, 90)}...</div>
             <div className='row'>
               <div className='MessageAuthor col-12'>
-                by <strong>{props.messageItem.author}</strong>
+                by <strong>{messageItem.author}</strong>
               </div>
             </div>
           </div>

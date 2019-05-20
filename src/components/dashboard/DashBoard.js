@@ -4,7 +4,7 @@ import SearchBar from "../serachBar/SearchBar";
 import PostMessageBar from "../postMessageBar/PostMessageBar";
 import MessagesList from "../messages/messagesList/MessagesList";
 import { connect } from "react-redux";
-import { fetchMessages } from "./../../store/actions/messageAction";
+import { fetchMessages } from "../../store/actions/messageAction";
 import NavBar from "../navBar/NavBar";
 
 export class DashBoard extends Component {

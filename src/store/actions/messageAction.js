@@ -15,24 +15,22 @@ export const createMessage = messageData => dispatch => {
   }).then(res => {
     console.log("CREATE_MESSAGES", res.data);
     dispatch({
-      type: "CREATE_MESSAGES",
+      type: "CREATE_MESSAGE",
       payload: res.data
     });
   });
 };
 
 export const deleteMessage = messageId => dispatch => {
-  console.log(" deleteMessage id", messageId);
-  Axios.delete(
-    "http://5cdeb8c36f4437001467aad7.mockapi.io/api/messages/" + messageId
-  )
+  console.log(" ....deleteMessage id", messageId);
+  Axios.delete(`http://5cdeb8c36f4437001467aad7.mockapi.io/api/messages/`)
     .then(res => {
       dispatch({
-        type: "DELETE_MESSAGES",
+        type: "DELETE_MESSAGE",
         payload: res.data
       });
     })
-    .catch(err => console.error("err", err));
+    .catch(err => console.log("err.respnse", err.response));
 };
 
 export const updateMessage = messageData => dispatch => {
@@ -42,9 +40,9 @@ export const updateMessage = messageData => dispatch => {
       ...messageData
     }
   ).then(res => {
-    console.log("UPDATE_MESSAGES", res.data);
+    console.log("UPDATE_MESSAGE", res.data);
     dispatch({
-      type: "UPDATE_MESSAGES",
+      type: "UPDATE_MESSAGE",
       payload: res.data
     });
   });
