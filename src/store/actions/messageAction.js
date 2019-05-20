@@ -1,12 +1,14 @@
 import Axios from "axios";
+console.log("FETCH_MESSAGES");
 export const fetchMessages = () => dispatch => {
-  Axios.get("https://5cdeb8c36f4437001467aad7.mockapi.io/api/messages").then(
-    res =>
+  Axios.get("http://5cdeb8c36f4437001467aad7.mockapi.io/api/messages")
+    .then(res =>
       dispatch({
         type: "FETCH_MESSAGES",
         payload: res.data
       })
-  );
+    )
+    .catch(err => console.log("err.respnse", err.response));
 };
 
 export const createMessage = messageData => dispatch => {
@@ -23,8 +25,10 @@ export const createMessage = messageData => dispatch => {
 };
 
 export const deleteMessage = messageId => dispatch => {
-  console.log(" ....deleteMessage id", messageId);
-  Axios.delete(`https://5cdeb8c36f4437001467aad7.mockapi.io/api/messages/`)
+  console.error(" ..........deleteMessage id", messageId);
+  Axios.delete(
+    `https://5cdeb8c36f4437001467aad7.mockapi.io/api/messages/${messageId}`
+  )
     .then(res => {
       dispatch({
         type: "DELETE_MESSAGE",

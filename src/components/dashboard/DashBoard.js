@@ -9,18 +9,18 @@ import NavBar from "../navBar/NavBar";
 
 export class DashBoard extends Component {
   componentDidMount() {
-    fetchMessages();
+    this.props.fetchMessages();
   }
-  render() {
+  render(props) {
     console.log("messages", this.props.messages);
     return (
-      <div className="DashBoardWrapper">
+      <div className='DashBoardWrapper'>
         <NavBar />
-        <div className="row">
-          <div className="col-2">
+        <div className='row'>
+          <div className='col-2'>
             <SideNav />
           </div>
-          <div className="col-8">
+          <div className='col-8'>
             <SearchBar />
             <MessagesList messages={this.props.messages} />
             <PostMessageBar />
@@ -35,7 +35,13 @@ const mapStateToProps = state => {
   return { messages: state.messages.items };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchMessages: () => dispatch(fetchMessages())
+  };
+};
+
 export default connect(
   mapStateToProps,
-  { fetchMessages }
+  mapDispatchToProps
 )(DashBoard);
