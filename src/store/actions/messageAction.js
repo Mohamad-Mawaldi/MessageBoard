@@ -1,6 +1,6 @@
 import Axios from "axios";
 export const fetchMessages = () => dispatch => {
-  Axios.get("http://5cdeb8c36f4437001467aad7.mockapi.io/api/messages").then(
+  Axios.get("https://5cdeb8c36f4437001467aad7.mockapi.io/api/messages").then(
     res =>
       dispatch({
         type: "FETCH_MESSAGES",
@@ -10,7 +10,8 @@ export const fetchMessages = () => dispatch => {
 };
 
 export const createMessage = messageData => dispatch => {
-  Axios.post("http://5cdeb8c36f4437001467aad7.mockapi.io/api/messages", {
+  console.log("creating message");
+  Axios.post("https://5cdeb8c36f4437001467aad7.mockapi.io/api/messages", {
     ...messageData
   }).then(res => {
     console.log("CREATE_MESSAGES", res.data);
@@ -23,7 +24,7 @@ export const createMessage = messageData => dispatch => {
 
 export const deleteMessage = messageId => dispatch => {
   console.log(" ....deleteMessage id", messageId);
-  Axios.delete(`http://5cdeb8c36f4437001467aad7.mockapi.io/api/messages/`)
+  Axios.delete(`https://5cdeb8c36f4437001467aad7.mockapi.io/api/messages/`)
     .then(res => {
       dispatch({
         type: "DELETE_MESSAGE",
@@ -35,7 +36,8 @@ export const deleteMessage = messageId => dispatch => {
 
 export const updateMessage = messageData => dispatch => {
   Axios.put(
-    "http://5cdeb8c36f4437001467aad7.mockapi.io/api/messages/" + messageData.id,
+    "https://5cdeb8c36f4437001467aad7.mockapi.io/api/messages/" +
+      messageData.id,
     {
       ...messageData
     }
