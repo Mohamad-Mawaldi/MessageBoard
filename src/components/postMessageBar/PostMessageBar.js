@@ -29,6 +29,8 @@ export class PostMessageBar extends Component {
   // };
 
   render() {
+    console.log("parentID:this.props.parentID", this.props.parentID);
+
     console.log("props.message", this.props.clickedMessage);
     // this.updateMessageHandler(this.props.clickedMessage.message);
 
@@ -36,7 +38,11 @@ export class PostMessageBar extends Component {
 
     const onChange = e => {
       this.setState({
-        messageItem: { ...this.state.messageItem, message: e.target.value }
+        messageItem: {
+          ...this.state.messageItem,
+          parentId: this.props.parentID,
+          message: e.target.value
+        }
       });
       console.log(".........", this.state.messageItem);
     };
@@ -44,20 +50,14 @@ export class PostMessageBar extends Component {
     const onSubmit = e => {
       e.preventDefault();
       console.log(".........submit", this.state.messageItem);
+      console.log("object", this.state.messageItem);
       this.props.createMessage(this.state.messageItem);
-      this.setState({
-        messageItem: { ...this.state.messageItem, message: "" },
-        id: 0
-      });
     };
 
     const handleKeyDown = e => {
       if (e.key === "Enter") {
+        console.log("object", this.state.messageItem);
         this.props.createMessage(this.state.messageItem);
-        this.setState({
-          messageItem: { ...this.state.messageItem, message: "" },
-          id: 0
-        });
       }
     };
 
@@ -89,7 +89,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-  return { clickedMessage: state.messages.item };
+  return { clickedMessage: state.messages.item, parentID: state.messages.id };
 };
 export default connect(
   mapStateToProps,

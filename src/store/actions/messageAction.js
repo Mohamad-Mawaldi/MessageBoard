@@ -72,3 +72,7 @@ export const getMessage = id => dispatch => {
     )
     .catch(err => console.log("err.respnse", err.response));
 };
+
+export const getParentID = id => dispatch => {
+  dispatch({ type: "GET_PARENT_ID", payload: id });
+};

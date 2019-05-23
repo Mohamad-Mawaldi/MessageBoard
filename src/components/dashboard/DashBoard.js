@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import MessagesList from "../messages/messagesList/MessagesList";
 import { connect } from "react-redux";
-import { fetchMessages } from "../../store/actions/messageAction";
+import { fetchMessages, getParentID } from "../../store/actions/messageAction";
 
 export class DashBoard extends Component {
   componentDidMount() {
     this.props.fetchMessages();
+    this.props.getParentID(this.props.match.params.id);
   }
 
   render() {
@@ -26,7 +27,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchMessages: () => dispatch(fetchMessages())
+    fetchMessages: () => dispatch(fetchMessages()),
+    getParentID: id => dispatch(getParentID(id))
   };
 };
 

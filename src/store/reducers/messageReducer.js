@@ -1,6 +1,7 @@
 const initialState = {
   items: [],
-  item: {}
+  item: {},
+  parent: 0
 };
 
 export default (state = initialState, action) => {
@@ -23,6 +24,9 @@ export default (state = initialState, action) => {
 
     case "GET_MESSAGE":
       return { ...state, item: { ...action.payload } };
+
+    case "GET_PARENT_ID":
+      return { ...state, id: action.payload };
 
     default:
       return state;
