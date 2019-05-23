@@ -19,24 +19,18 @@ export class PostMessageBar extends Component {
     }
   };
 
-  updateMessageHandler = message => {
-    if (!message.isEmpty()) {
-      const message = this.props.clickedMessage;
-      const id = message.id;
-      delete message.id;
-
-      this.setState({
-        messageItem: {
-          message
-        },
-        id
-      });
-    }
-  };
+  // updateMessageHandler = messageItem => {
+  //   if (!messageItem.isEmpty()) {
+  //     const messageItem = this.props.clickedMessage;
+  //     const id = messageItem.id;
+  //     delete messageItem.id;
+  //     return { id, messageItem };
+  //   }
+  // };
 
   render() {
     console.log("props.message", this.props.clickedMessage);
-    this.updateMessageHandler(this.props.clickedMessage.message);
+    // this.updateMessageHandler(this.props.clickedMessage.message);
 
     console.log("state", this.state);
 
@@ -68,7 +62,7 @@ export class PostMessageBar extends Component {
     };
 
     return (
-      <div className='row '>
+      <div className='row PostBarWrapper'>
         <div className='col '>
           <input
             className='PostBarInput'

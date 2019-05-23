@@ -1,5 +1,6 @@
 import Axios from "axios";
 console.log("FETCH_MESSAGES");
+
 export const fetchMessages = () => dispatch => {
   Axios.get("http://5cdeb8c36f4437001467aad7.mockapi.io/api/messages")
     .then(res =>
@@ -59,4 +60,15 @@ export const prepareMessageToUpdate = messageData => dispatch => {
     type: "PREPARE_MESSAGE_TO_UPDATE",
     payload: messageData
   });
+};
+
+export const getMessage = id => dispatch => {
+  Axios.get(`http://5cdeb8c36f4437001467aad7.mockapi.io/api/messages/${id}`)
+    .then(res =>
+      dispatch({
+        type: "GET_MESSAGE",
+        payload: res.data
+      })
+    )
+    .catch(err => console.log("err.respnse", err.response));
 };

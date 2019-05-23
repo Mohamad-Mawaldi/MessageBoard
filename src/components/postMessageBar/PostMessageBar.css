@@ -1,3 +1,9 @@
+.PostBarWrapper {
+  position: fixed;
+  bottom: 10px;
+  width: 70%;
+}
+
 .PostBarInput {
   width: 96%;
   height: 40px;

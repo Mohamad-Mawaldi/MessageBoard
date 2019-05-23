@@ -20,6 +20,10 @@ export default (state = initialState, action) => {
 
     case "PREPARE_MESSAGE_TO_UPDATE":
       return { ...state, item: { ...action.payload } };
+
+    case "GET_MESSAGE":
+      return { ...state, item: { ...action.payload } };
+
     default:
       return state;
   }

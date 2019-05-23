@@ -6,7 +6,6 @@ const MessagesList = props => {
   const messagesItems = props.messages.map(messageItem => (
     <Message key={messageItem.id} messageItem={messageItem} />
   ));
-
   return <div className='MessagesList'>{messagesItems}</div>;
 };
 

@@ -16,7 +16,7 @@ const Message = props => {
             />
           </div>
           <div className='MessageContent col-9'>
-            <div>{props.messageItem.message.substring(0, 90)}...</div>
+            <div>{props.messageItem.message}...</div>
             <div className='row'>
               <div className='MessageAuthor col-12'>
                 by <strong>{props.messageItem.author}</strong>

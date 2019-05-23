@@ -6,6 +6,7 @@ import {
   prepareMessageToUpdate
 } from "../../../store/actions/messageAction";
 import { UserName } from "../../../Consts";
+import { Link } from "react-router-dom";
 
 const MessageOptions = props => {
   if (props.messageItem.author === UserName) {
@@ -25,25 +26,17 @@ const MessageOptions = props => {
         >
           <i className='fas fa-pen' />
         </li>
-        <li
-          onClick={() => {
-            console.log("reply");
-          }}
-        >
-          <i className='fas fa-reply-all' />
-        </li>
+        <Link to={`/${props.messageItem.id}`}>
+          <li className='fas fa-reply-all' />
+        </Link>
       </ul>
     );
   } else {
     return (
       <ul className='MessageOptionsBody'>
-        <li
-          onClick={() => {
-            alert("hello delete");
-          }}
-        >
-          <i className='fas fa-reply-all' />
-        </li>
+        <Link to={`/${props.messageItem.id}`}>
+          <li className='fas fa-reply-all' />
+        </Link>
       </ul>
     );
   }
